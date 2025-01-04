@@ -7,5 +7,14 @@ Some significant features of Balancer:
 
 - Pool Creator Fee: The one who developed a thriving pool will get some share of swap fee and yield fee.
 
-- Pool Role Permissions:
+- Pool Role Permissions: Only certain accounts have the permission to change the certain pool settings
 
+```javascript
+struct PoolRoleAccounts {
+    address pauseManager;//can pause or unpause a pool
+    address swapFeeManager;//can set swap fees
+    address poolCreator;//can set pool creator fee
+}
+```
+If address is set zero, Balancer Governance gets the permission by default.
+Balancer governance can always pause/unpause a pool, but if there is a swapFeeManager or poolCreator , then Balancer Governance cannot seswap fees or pool creator fee
